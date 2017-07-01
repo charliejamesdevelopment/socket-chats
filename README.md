@@ -33,3 +33,5 @@ $ npm install && npm start
 ```
 Now navigate to your application folder that you cloned and head into the file called /routes/database.js and replace url with your preferred mongodb url.
 
+# Thanks!
+Thanks for checking out this repository, hope it helped in any way possible.
