@@ -1,0 +1,40 @@
+{{#if message}}
+  <script type="text/javascript">
+    swal({
+      title: "Message incoming!",
+      type: 'info',
+      text: '{{message}}'
+    })
+  </script>
+{{/if}}
+<div class="container" style="width:60%;">
+  <div id="chatbox-header" class="row">
+    <div class="col-md-6">
+      <h1>{{title}}</h1>
+      <p>Welcome, {{username}}</p>
+    </div>
+    <div class="col-md-6 right">
+      <a href="/logout" class="btn btn-danger">Logout</a>
+      <a href="/create_chat_box" class="btn btn-success">Create</a>
+    </div>
+  </div>
+  <div class="main-content-wrapper">
+    <form action="/create_chat_box" method="post">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" class="form-control input-lg" placeholder="Enter name..." name="name">
+      </div>
+
+      <div class="form-group">
+        <label for="max_users">Max Users</label>
+        <input type="number" id="name" class="form-control input-lg" placeholder="Enter max users..." name="max_users">
+      </div>
+
+      <div class="form-group">
+        <label for="description">Short Description</label>
+        <textarea type="text" id="description" class="form-control input-lg" placeholder="Enter description..." name="description"></textarea>
+      </div>
+      <button type="submit" class="btn btn-success btn-lg">Create</button>
+    </form>
+  </div>
+</div>

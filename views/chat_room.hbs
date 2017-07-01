@@ -1,0 +1,95 @@
+{{#if message}}
+  <script type="text/javascript">
+    swal({
+      title: "Message incoming!",
+      type: 'info',
+      text: '{{message}}'
+    })
+  </script>
+{{/if}}
+<div class="container" style="width:60%;">
+  <div id="chatbox-header" class="row">
+    <div class="col-md-6">
+      <h1>Chat Box: <strong>{{chat.name}}</strong></h1>
+      <p>Welcome, <strong>{{username}}</strong></p>
+    </div>
+    <div class="col-md-6 right">
+      <a href="/logout" class="btn btn-danger">Logout</a>
+      <a href="/" class="btn btn-success">Back</a>
+    </div>
+  </div>
+  <div class="main-wrapper">
+    <div class="chat_messages"></div>
+    <div class="chat_enter">
+      <textarea type="text" class="form-control" placeholder="Enter message..." id="message"></textarea>
+      <div id="socket"></div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+var username = "{{username}}";
+var chat_id = "{{chat._id}}";
+var socket = io(getUrl());
+
+socket.emit("join_room_request", {room : chat_id});
+
+socket.emit("get_previous_chats", {room : chat_id});
+
+socket.on("receive_previous_chats", function(data) {
+  if(data.messages) {
+    if(data.messages.length) {
+      for(var i = 0; i < data.messages.length; i++) {
+        var obj = data.messages[i]
+        $('.chat_messages')
+        .append("<div class='message'><div class='message_head'><font color='"+obj.color+"'>" + obj.username + "</font></div><div class='message_content'>" + obj.message + "</div></div>");
+      }
+      $(".chat_messages").scrollTop($(".chat_messages")[0].scrollHeight);
+    }
+  }
+})
+
+socket.on("new_message", function(data) {
+  $('.chat_messages')
+  .append("<div class='message'><div class='message_head'><font color='"+data.color+"'>" + data.username + "</font></div><div class='message_content'>" + data.message + "</div></div>");
+    $(".chat_messages").scrollTop($(".chat_messages")[0].scrollHeight);
+})
+
+socket.on("chat_box_error", function(data) {
+  $('#socket').removeClass('success');
+  $('#socket').addClass('error');
+  $('#socket').text(data.message);
+})
+
+socket.on("chat_box_success", function(data) {
+  $('#message').val("")
+  $('#socket').removeClass('error');
+  $('#socket').addClass('success');
+  $('#socket').text(data.message);
+})
+
+socket.on("join_room_request_response", function(data) {
+  swal({
+    title: "Error!",
+    type: 'error',
+    text: data.message,
+    allowOutsideClick: false
+  }).then(function() {
+    window.location = getUrl() + "/";
+  })
+});
+
+$('#message').on('keydown', function(e) {
+    if (e.which == 13) {
+      var val = $('#message').val();
+      if(val == "") {
+        e.preventDefault();
+        $('#socket').removeClass('success');
+        $('#socket').addClass('error');
+        $('#socket').text("Please input a message!");
+      } else {
+        socket.emit('new_message', {username: username, message: val, chat_id: chat_id})
+        e.preventDefault();
+      }
+    }
+});
+</script>

@@ -1,0 +1,25 @@
+<div class="form-wrapper">
+  <div class="header">
+    <h1>Login</h1>
+    <p>Welcome to {{title}}</p>
+  </div>
+  <div class="content">
+    {{#if message}}
+      <script type="text/javascript">
+        swal({
+          title: "Error!",
+          type: 'error',
+          text: "{{message}}"
+        })
+      </script>
+    {{/if}}
+    <form method="post" action="/login">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" class="form-control input-lg" placeholder="Enter username..." name="username">
+      </div>
+
+      <button type="submit" class="btn btn-success btn-lg">Enter</button>
+    </form>
+  </div>
+</div>
