@@ -2,7 +2,7 @@
 A simple application utilising the open-source npm module Socket.io & Express to allow users to create their own chat rooms!
 
 # READ!
-This application was built on Node.js v8.1.0 and Express v4.15.2. Relevant dependancy versions can be found below:
+This application was built on Node.js v8.1.0 and Express v4.15.2. You will also need a MongoDB database to run the socket app itself. Please scroll to installation for relevant instructions. Relevant dependancy versions can be found below:
 ```json
 "dependencies": {
   "body-parser": "~1.17.1",
@@ -29,9 +29,15 @@ To install and run on port 3000 locally:
 ```
 $ cd path/to/your/desired/folder
 $ git clone https://github.com/charliejamesdevelopment/socket-chats.git
-$ npm install && npm start
 ```
 Now navigate to your application folder that you cloned and head into the file called /routes/database.js and replace url with your preferred mongodb url.
+
+You can also change the port in the bottom of the app.js file.
+### Now run:
+```
+$ npm install && npm start
+```
+And you're setup!
 
 # Thanks!
 Thanks for checking out this repository, hope it helped in any way possible.
