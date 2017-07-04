@@ -1,24 +1,26 @@
 # socket-chats
 A simple application utilising the open-source npm module Socket.io & Express to allow users to create their own chat rooms!
 
-# READ!
-This application was built on Node.js v8.1.0 and Express v4.15.2. You will also need a MongoDB database to run the socket app itself. Please scroll to installation for relevant instructions. Relevant dependancy versions can be found below:
-```json
-"dependencies": {
-  "body-parser": "~1.17.1",
-  "connect-flash": "^0.1.1",
-  "cookie-parser": "~1.4.3",
-  "cookie-session": "^2.0.0-beta.2",
-  "debug": "~2.6.3",
-  "express": "~4.15.2",
-  "hbs": "~4.0.1",
-  "mongodb": "^2.2.29",
-  "mongoose": "^4.11.0",
-  "morgan": "~1.8.1",
-  "nodemon": "^1.11.0",
-  "serve-favicon": "~2.4.2",
-  "socketio": "^1.0.0"
-}
+# Dependencies
+This application was built on Node.js v8.1.0 and Express v4.15.2. 
+
+You will also need a MongoDB database to run the socket app itself. 
+
+Please scroll to installation for relevant instructions. Relevant dependancy versions can be found below:
+```
+body-parser: ~1.17.1,
+connect-flash: "^0.1.1",
+cookie-parser: "~1.4.3",
+cookie-session: "^2.0.0-beta.2",
+debug: "~2.6.3",
+express: "~4.15.2",
+hbs: "~4.0.1",
+mongodb: "^2.2.29",
+mongoose: "^4.11.0",
+morgan: "~1.8.1",
+nodemon: "^1.11.0",
+serve-favicon: "~2.4.2",
+socketio: "^1.0.0"
 ```
 
 # License
