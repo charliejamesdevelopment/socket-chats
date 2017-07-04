@@ -1,6 +1,8 @@
 # socket-chats
 A simple application utilising the open-source npm module Socket.io & Express to allow users to create their own chat rooms!
 
+# Validation still yet to be implemented as well as error handling.
+
 # Dependencies
 This application was built on Node.js v8.1.0 and Express v4.15.2. 
 
